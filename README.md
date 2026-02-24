@@ -3,8 +3,7 @@ NuviaIA es un asistente virtual de escritorio con estilo kawaii que flota como u
 
 NuviaIA ☁️
 
-![Uploading image.png…]()
-
+<img width="537" height="706" alt="image" src="https://github.com/user-attachments/assets/54db3397-c42a-48bd-90e8-21d857592a3d" />
 
 Descripción:
 NuviaIA es un asistente virtual de escritorio con estilo kawaii, que flota como una nube sobre Windows gracias a una GUI nativa desarrollada en Tkinter. Ofrece animaciones realistas, boca sincronizada con la voz, partículas de humo, efectos visuales de brillo y sparkles, y escucha continua sin necesidad de wake-word. Su diseño está inspirado en la estética “Kawaii Pro” y está pensado para ser escalable y totalmente interactivo.
