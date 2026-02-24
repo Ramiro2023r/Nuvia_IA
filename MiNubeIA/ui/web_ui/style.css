@@ -1,0 +1,331 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*
+ * TRANSPARENCIA:
+ * pywebview con transparent=True configura WebView2 DefaultBackgroundColor=Transparent.
+ * El CSS debe usar background: transparent (NO un color sólido).
+ * Cualquier color sólido en html/body romperá la transparencia.
+ */
+
+html,
+body {
+    width: 260px;
+    height: 220px;
+    background: transparent !important;
+    background-color: transparent !important;
+    overflow: hidden;
+    margin: 0;
+}
+
+.pywebview-drag-region {
+    width: 260px;
+    height: 220px;
+    background: transparent !important;
+    background-color: transparent !important;
+    cursor: grab;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ── Scene wrapper ── */
+.scene {
+    position: relative;
+    width: 260px;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent !important;
+}
+
+/* ── Aura ring ── */
+.aura {
+    position: absolute;
+    width: 160px;
+    height: 60px;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(140, 100, 255, 0.45) 0%, transparent 70%);
+    filter: blur(12px);
+    animation: auraPulse 3s ease-in-out infinite;
+}
+
+@keyframes auraPulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: translateX(-50%) scaleX(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateX(-50%) scaleX(1.15);
+    }
+}
+
+/* ── Smoke particles ── */
+.smoke-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.smoke {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200, 210, 255, 0.55) 0%, transparent 70%);
+    filter: blur(8px);
+    animation: smokeAnim var(--sd) ease-out infinite var(--sdelay);
+    opacity: 0;
+}
+
+@keyframes smokeAnim {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(0.4);
+    }
+
+    20% {
+        opacity: 0.7;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(var(--sx), var(--sy)) scale(1.8);
+    }
+}
+
+/* ── Cloud wrapper ── */
+.cloud-wrap {
+    position: relative;
+    width: 120px;
+    height: 80px;
+    animation: float 3.5s ease-in-out infinite, sway 7s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes sway {
+
+    0%,
+    100% {
+        transform: rotate(-1.5deg);
+    }
+
+    50% {
+        transform: rotate(1.5deg);
+    }
+}
+
+/* ── Cloud glow ── */
+.cloud-glow {
+    position: absolute;
+    inset: -15px;
+    border-radius: 60px;
+    background: radial-gradient(ellipse, rgba(160, 130, 255, 0.5) 0%, transparent 70%);
+    filter: blur(14px);
+    animation: glowPulse 3.5s ease-in-out infinite;
+    z-index: 0;
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.12);
+    }
+}
+
+/* ── Cloud body ── */
+.cloud-body {
+    position: absolute;
+    inset: 0;
+    border-radius: 50px 50px 38px 38px;
+    background: radial-gradient(ellipse at 40% 35%, rgba(255, 255, 255, 0.95) 0%, rgba(200, 220, 255, 0.85) 45%, rgba(170, 190, 240, 0.9) 100%);
+    box-shadow: 0 0 25px rgba(180, 160, 255, 0.8), 0 0 50px rgba(140, 120, 255, 0.4), inset 0 -8px 16px rgba(160, 120, 210, 0.25), inset 0 4px 10px rgba(255, 255, 255, 0.8);
+    z-index: 1;
+    overflow: hidden;
+    transition: background 0.5s ease;
+}
+
+/* Top bumps */
+.bump {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 38% 38%, rgba(255, 255, 255, 0.95), rgba(200, 220, 255, 0.85));
+    box-shadow: 0 0 18px rgba(180, 160, 255, 0.5);
+    z-index: 1;
+}
+
+.b1 {
+    width: 52px;
+    height: 48px;
+    top: -26px;
+    left: 18px;
+}
+
+.b2 {
+    width: 38px;
+    height: 36px;
+    top: -16px;
+    left: 58px;
+}
+
+.b3 {
+    width: 28px;
+    height: 26px;
+    top: -10px;
+    right: 14px;
+}
+
+/* Cheeks */
+.cheek {
+    position: absolute;
+    width: 20px;
+    height: 11px;
+    border-radius: 50%;
+    background: rgba(255, 140, 170, 0.45);
+    bottom: 20px;
+    filter: blur(2px);
+    z-index: 2;
+}
+
+.cl {
+    left: 13px;
+}
+
+.cr {
+    right: 13px;
+}
+
+/* Eyes */
+.eye {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #1a0a0a;
+    bottom: 28px;
+    z-index: 2;
+    animation: blink 5s ease-in-out infinite;
+}
+
+.eye::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.75);
+}
+
+.el {
+    left: 27px;
+}
+
+.er {
+    right: 27px;
+}
+
+@keyframes blink {
+
+    0%,
+    90%,
+    100% {
+        transform: scaleY(1);
+    }
+
+    94% {
+        transform: scaleY(0.08);
+    }
+}
+
+/* Smile / Mouth */
+.smile {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 9px;
+    border: 2.5px solid #1a0a0a;
+    border-top: none;
+    border-radius: 0 0 14px 14px;
+    z-index: 2;
+}
+
+.smile.talking {
+    animation: talk 0.2s ease-in-out infinite alternate;
+    background: #1a0a0a;
+}
+
+@keyframes talk {
+    0% {
+        transform: translateX(-50%) scaleY(1);
+    }
+
+    100% {
+        transform: translateX(-50%) scaleY(2.2);
+    }
+}
+
+/* Sparkles */
+.sp {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 2;
+    animation: sparkle var(--spd) ease-in-out infinite var(--spdelay);
+}
+
+@keyframes sparkle {
+
+    0%,
+    100% {
+        opacity: 0.15;
+        transform: scale(0.7);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* Tinte dinámico por estados */
+.state-listening .cloud-body {
+    background: radial-gradient(circle, #e8faff 0%, #7ecfff 100%) !important;
+}
+
+.state-thinking .cloud-body {
+    background: radial-gradient(circle, #f5e8ff 0%, #be9bf2 100%) !important;
+}
+
+.state-speaking .cloud-body {
+    background: radial-gradient(circle, #fff6e8 0%, #f2be9b 100%) !important;
+}
