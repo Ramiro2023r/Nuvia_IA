@@ -4,7 +4,9 @@ NuviaIA es un asistente virtual de escritorio con estilo kawaii que flota como u
 NuviaIA ☁️
 
 <img width="464" height="314" alt="image" src="https://github.com/user-attachments/assets/513556f2-25b7-44e6-8ee8-f6b3c7566039" />
+
 <img width="397" height="658" alt="image" src="https://github.com/user-attachments/assets/f7cf93b4-c376-4bac-add2-0438130fba55" />
+
 <img width="343" height="618" alt="image" src="https://github.com/user-attachments/assets/d2453a64-60a0-4dee-bca3-b4526d33dee2" />
 
 
