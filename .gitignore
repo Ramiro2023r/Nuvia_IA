@@ -1,0 +1,29 @@
+# Environment variables (API keys)
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Models (too large for git)
+model/
+models/
+
+# Lock files
+nuvia.lock
+
+# Logs
+*.log
+
+# Voice registration
+owner_voice.npy
+owner_voice.pkl
+
+# Generated assets
+assets/generated/
+assets/context/
+
+# IDE
+.vscode/
+.idea/
